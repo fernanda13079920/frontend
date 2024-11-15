@@ -1,0 +1,28 @@
+/* styles.css */
+
+/* Importar Bootstrap */
+@import 'bootstrap/scss/bootstrap';
+
+/* Estilos globales antiguos */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-size: 13.5px; /* Ajuste global */
+}
+
+/* Resto de estilos antiguos, ajustados */
+html, body { height: 100%; }

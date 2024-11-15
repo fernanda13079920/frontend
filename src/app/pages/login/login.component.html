@@ -1,0 +1,53 @@
+<div class="login-container">
+    <div class="login-content">
+      <div class="login-header">
+        <div class="logo-container">
+          <div class="logo">
+            <span class="logo-icon">🔐</span>
+          </div>
+          <h2>Inicio de Sesión</h2>
+        </div>
+      </div>
+  
+      <form (ngSubmit)="iniciarSesion()" #loginForm="ngForm" class="login-form">
+        <div class="input-box">
+          <span class="icon">
+            <i class="bi bi-envelope-at-fill"></i>
+          </span>
+          <input
+            id="correo"
+            type="email"
+            [(ngModel)]="correo"
+            name="correo"
+            required
+          />
+          <label>Email</label>
+        </div>
+  
+        <div class="input-box">
+          <span class="icon">
+            <i class="bi bi-lock-fill"></i>
+          </span>
+          <input
+            id="password"
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+          <label>Password</label>
+        </div>
+  
+        <div class="remember-forgot">
+          <label><input type="checkbox" [(ngModel)]="recordar" />Recordar mi contraseña</label>
+        </div>
+        <div class="remember-forgot">
+          <label><input type="checkbox" [(ngModel)]="olvidarcuenta" (click)="eliminarInicioDeSesion()" />Eliminar cuenta</label>
+        </div>
+  
+        <button class="login-button" type="submit">Iniciar Sesión</button>
+  
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,28 @@
+<div class="table-responsive custom-table">
+  <h1>SUCURSALES</h1>
+  <button class="btn btn-outline-info custom-btn-add" [routerLink]="['/crear-sucursal']">agregar sucursal</button>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sucursal of sucursales">
+        <td>{{ sucursal.id }}</td>
+        <td>{{ sucursal.nombre }}</td>
+        <td>{{ sucursal.direccion }}</td>
+        <td>
+          <div class="contain-btn-action">
+            <button class="btn btn-outline-danger custom-btn">eliminar</button>
+            <button class="btn btn-outline-primary">actualizar</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

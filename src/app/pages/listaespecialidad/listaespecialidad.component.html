@@ -1,0 +1,30 @@
+
+<div class="table-responsive custom-table">
+    <h1>ESPECIALIDADES</h1>
+    
+    <button class="btn btn-outline-info custom-btn-add" [routerLink]="['/crear-especialidad']">agregar especialidad</button>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let especialidad of especialidades">
+          <td>{{ especialidad.id }}</td>
+          <td>{{ especialidad.nombre }}</td>
+          <td>{{ especialidad.descipcion }}</td>
+          <td>
+            <div class="contain-btn-action">
+              <button class="btn btn-outline-danger custom-btn">eliminar</button>
+              <button class="btn btn-outline-primary">actualizar</button>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

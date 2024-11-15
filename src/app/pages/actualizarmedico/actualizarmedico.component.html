@@ -1,0 +1,44 @@
+<div class="container_content" *ngIf="medico">
+    <div class="container">
+        <div class="input">
+            <div class="row">
+                <label>Nombre: </label>
+                <input type="text" [(ngModel)]="medico.medicoDTO.nombre" name="nombre">
+            </div>
+            <div class="row">
+                <label>Apellido paterno: </label>
+                <input type="text" [(ngModel)]="medico.medicoDTO.apellido_paterno" name="apellido_paterno">
+            </div>
+            <div class="row">
+                <label>Apellido materno: </label>
+                <input type="text" [(ngModel)]="medico.medicoDTO.apellido_materno" name="apellido_materno">
+            </div>
+
+            <div class="row">
+                <label>Estado: </label>
+                <div class="checkbox-container">
+                    <input type="checkbox" [(ngModel)]="medico.medicoDTO.estado" (ngModelChange)="medico.medicoDTO.estado = $event ? true : false" name="estado">
+                    <div class="checkbox-label">{{ medico.medicoDTO.estado }}</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label>Email: </label>
+                <input type="email" [(ngModel)]="medico.medicoDTO.email" name="email">
+            </div>
+            <div class="row">
+                <label>Sucursal: </label>
+                <select [(ngModel)]="medico.sucursalEspecialidadDTO.id_sucursal" name="id_sucursal">
+                    <option *ngFor="let sucursal of sucursales" [ngValue]="sucursal.id">{{ sucursal.nombre }}</option>
+                </select>
+            </div>
+            <div class="row">
+                <label>Especialidad: </label>
+                <select [(ngModel)]="medico.sucursalEspecialidadDTO.id_especialidad" name="id_especialidad">
+                    <option *ngFor="let especialidad of especialidades" [ngValue]="especialidad.id">{{ especialidad.nombre }}</option>
+                </select>
+            </div>
+            <div class="btn btn-primary custom-btn" (click)="actualizarMedico()">Actualizar médico</div>
+        </div>
+    </div>
+</div>

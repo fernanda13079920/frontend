@@ -1,0 +1,47 @@
+<div class="table-responsive custom-table">
+    <h1>Lista de Medicos</h1>
+    <div class="contain-search-component">
+        <button class="btn btn-outline-info custom-btn-add" [routerLink]="['/crear-medico']">agregar médico</button>
+
+        <form class="d-flex">
+            <div class="contain-form-search">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Estado</th>
+                <th>Email</th>
+                <th>Sucursal</th>
+                <th>Especialidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medico of medicos">
+                <td>{{ medico.id }}</td>
+                <td>{{ medico.nombre}}</td>
+                <td>{{ medico.apellidoPaterno + ' '+medico.apellidoMaterno}}</td>
+                <td>{{ medico.estado}}</td>
+                <td>{{ medico.email}}</td>
+                <td>{{ medico.id_sucursal_especialidad.id_sucursal.nombre}}</td>
+                <td>{{ medico.id_sucursal_especialidad.id_especialidad.nombre}}</td>
+
+                <td>
+                    <div class="contain-btn-action">
+                        <button class="btn btn-outline-danger custom-btn">eliminar</button>
+                        <button class="btn btn-outline-primary"
+                            [routerLink]="['/actualizar-medico',medico.id]">actualizar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

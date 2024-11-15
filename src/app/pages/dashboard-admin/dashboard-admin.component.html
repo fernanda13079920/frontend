@@ -1,0 +1,47 @@
+<div class="dashboard">
+    <div class="user-info">
+      <img src="assets/image/login.webp" alt="User Icon" class="user-icon">
+      <h2>Bienvenido</h2>
+      <h6 class="nameUser">{{userEmail}}</h6>
+      <p [routerLink]="['/listar-medico']">Medicos</p>
+
+      <p [routerLink]="['/ver-consultas']" >Consultas</p>
+      <!-- <div class="dropdown">
+        <button class="dropbtn">Gestionar Consultas</button>
+        <div class="dropdown-content">
+          <a href="ver-consultas">Ver consultas</a>
+        </div>
+      </div> -->
+
+      <p [routerLink]="['/ver-sucursales']" >Gestionar Sucursales</p>
+      <!-- <div class="dropdown">
+        <button class="dropbtn">Gestionar Sucursales</button>
+        <div class="dropdown-content">
+          <a href="ver-sucursales">Ver sucursales</a>
+        </div>
+      </div> -->
+      
+      <p [routerLink]="['/ver-especialidades']" >Gestionar Especialidades</p>
+      <!-- <div class="dropdown">
+        <button class="dropbtn">Gestionar Especialidades</button>
+        <div class="dropdown-content">
+          <a href="ver-especialidades">Ver especialidades</a>
+        </div>
+      </div> -->
+
+      <p [routerLink]="['/ver-horarios']" >Gestionar Horarios</p>
+      <!-- <div class="dropdown">
+        <button class="dropbtn">Gestionar Horarios</button>
+        <div class="dropdown-content">
+          <a href="crear-horario">Crear horario</a>
+          <a href="ver-horarios">Ver horarios</a>
+        </div>
+      </div> -->
+
+      <p>Gestionar Ficha</p>
+      <p>Recetas</p>
+      <p>Historial Clínico</p>
+      <p>Pruebas Médicas</p>
+       </div>
+    
+    

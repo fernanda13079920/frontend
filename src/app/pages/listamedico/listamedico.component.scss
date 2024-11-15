@@ -1,0 +1,37 @@
+
+.contain-btn-action{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+}
+.custom-table{
+    width: 100%;
+    padding: 1rem 4rem;
+    border-radius: 4rem;
+}
+
+h1{
+    color: rgb(189, 28, 28);
+    text-align: center;
+    font-weight: 500;
+}
+th{
+    color: rgb(54, 54, 54);
+    padding-left: 1.5rem;
+    font-weight: 600;
+}
+td{
+    padding-left: 1.5rem;
+}
+.contain-search-component{
+    height: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.contain-form-search{
+    display: flex;
+  width: max-content;
+}

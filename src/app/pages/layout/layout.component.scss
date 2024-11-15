@@ -1,0 +1,32 @@
+.layout {
+    display: flex;
+  }
+  .dashboard_{
+    width: 25%; /* Ajusta el ancho según tus necesidades */
+  }
+   .content {
+    width: 75%;/* Ajusta el ancho según tus necesidades */
+   }
+   .nav{
+
+    padding: 0.15rem 0;
+    display: flex;
+    margin-right: 0rem;
+    justify-content: end;
+    width: 100%;
+   }
+   .custom-a{
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-right: 2rem;
+    margin-top: 0.5rem;
+    padding: 0.8rem;
+    border-radius: 2rem;
+    background-color: #a10909;
+   }
+   .custom-a:hover{
+    color: white;
+    background-color: #f70e0e;
+   }
+  

@@ -1,0 +1,62 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <nav class="sidebar" [class.collapsed]="sidebarCollapsed">
+    <div class="sidebar-header">
+      <div class="logo-container">
+        <span class="logo">🎯</span>
+        <span class="logo-text" *ngIf="!sidebarCollapsed">Dashboard</span>
+      </div>
+      <button class="collapse-btn" (click)="toggleSidebar()">
+        {{ sidebarCollapsed ? '→' : '←' }}
+      </button>
+    </div>
+
+    <div class="user-info">
+      <img src="assets/image/login.webp" alt="User Icon" class="user-avatar" />
+      <h3 *ngIf="!sidebarCollapsed">{{ userEmail }}</h3>
+      <p *ngIf="!sidebarCollapsed">Administrador</p>
+    </div>
+
+    <div class="sidebar-menu">
+      <a routerLink="/listar-medico" routerLinkActive="active" class="menu-item">
+        <span class="menu-icon">👥</span>
+        <span class="menu-text" *ngIf="!sidebarCollapsed">Médicos</span>
+      </a>
+      <a routerLink="/ver-consultas" routerLinkActive="active" class="menu-item">
+        <span class="menu-icon">🗓️</span>
+        <span class="menu-text" *ngIf="!sidebarCollapsed">Consultas</span>
+      </a>
+      <a routerLink="/ver-sucursales" routerLinkActive="active" class="menu-item">
+        <span class="menu-icon">🏥</span>
+        <span class="menu-text" *ngIf="!sidebarCollapsed">Sucursales</span>
+      </a>
+      <a routerLink="/ver-especialidades" routerLinkActive="active" class="menu-item">
+        <span class="menu-icon">📋</span>
+        <span class="menu-text" *ngIf="!sidebarCollapsed">Especialidades</span>
+      </a>
+      <a routerLink="/ver-horarios" routerLinkActive="active" class="menu-item">
+        <span class="menu-icon">⏰</span>
+        <span class="menu-text" *ngIf="!sidebarCollapsed">Horarios</span>
+      </a>
+    </div>
+
+    <button class="logout-btn" (click)="logout()">
+      <span class="menu-icon">🚪</span>
+      <span class="menu-text" *ngIf="!sidebarCollapsed">Cerrar sesión</span>
+    </button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="content-header">
+      <h1>{{ getCurrentPageTitle() }}</h1>
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar..." />
+        <span class="search-icon">🔍</span>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
