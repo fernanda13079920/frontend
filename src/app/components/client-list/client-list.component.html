@@ -1,0 +1,133 @@
+<div class="client-container">
+  <div class="header-actions">
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+        placeholder="Buscar cliente..."
+        class="search-input"
+      />
+    </div>
+    <button (click)="showForm.set(true)" *ngIf="!showForm()" class="add-button">
+      <span>➕</span> Nuevo Cliente
+    </button>
+  </div>
+
+  <!-- Formulario de Cliente -->
+  <div *ngIf="showForm()" class="client-form-container">
+    <div class="form-header">
+      <h3>
+        {{ editingClient() ? "Editar Cliente" : "Agregar Nuevo Cliente" }}
+      </h3>
+      <button class="close-button" (click)="cancelEdit()">✕</button>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #clientForm="ngForm" class="client-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input
+            id="name"
+            [(ngModel)]="currentClient().name"
+            name="name"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            [(ngModel)]="currentClient().email"
+            name="email"
+            type="email"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Teléfono</label>
+          <input
+            id="phone"
+            [(ngModel)]="currentClient().phone"
+            name="phone"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="address">Dirección</label>
+          <input
+            id="address"
+            [(ngModel)]="currentClient().address"
+            name="address"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="status">Estado</label>
+          <select
+            id="status"
+            [(ngModel)]="currentClient().status"
+            name="status"
+            required
+            class="form-input"
+          >
+            <option value="active">Activo</option>
+            <option value="inactive">Inactivo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="submit"
+          [disabled]="!clientForm.form.valid"
+          class="save-button"
+        >
+          {{ editingClient() ? "Actualizar" : "Guardar" }}
+        </button>
+        <button type="button" (click)="cancelEdit()" class="cancel-button">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Lista de Clientes -->
+  <div class="client-cards">
+    <div *ngFor="let client of filteredClients()" class="client-card">
+      <div class="card-header">
+        <div class="client-info">
+          <h3>{{ client.name }}</h3>
+          <span [class]="'status-badge ' + getStatusColor(client.status)">
+            {{ client.status === "active" ? "Activo" : "Inactivo" }}
+          </span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-button" (click)="editClient(client)">✏️</button>
+          <button class="delete-button" (click)="deleteClient(client.id)">
+            🗑️
+          </button>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <p><strong>Email:</strong> {{ client.email }}</p>
+        <p><strong>Teléfono:</strong> {{ client.phone }}</p>
+        <p><strong>Dirección:</strong> {{ client.address }}</p>
+      </div>
+    </div>
+    <!-- Mostrar mensaje cuando no hay resultados -->
+    <div *ngIf="filteredClients().length === 0" class="no-clients">
+      <p>No se encontraron clientes que coincidan con la búsqueda</p>
+    </div>
+  </div>
+</div>

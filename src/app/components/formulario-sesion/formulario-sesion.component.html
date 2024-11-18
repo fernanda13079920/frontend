@@ -1,0 +1,147 @@
+<div class="formulario-container">
+  <div class="timer-container" [ngClass]="{ warning: tiempoRestante() <= 30 }">
+    <div class="timer">Tiempo restante: {{ tiempoFormateado() }}</div>
+  </div>
+
+  <h2>Formulario - Sesión Médica</h2>
+
+  <section class="datos-generales">
+    <h3>Datos Generales</h3>
+    <div class="info-creacion">
+      <p>Fecha de Creación: {{ fechaCreacion }}</p>
+      <div class="form-group">
+        <label for="nombrePaciente">Nombre:</label>
+        <input
+          type="text"
+          id="nombrePaciente"
+          [(ngModel)]="nombrePacienteModel.value"
+          placeholder="Nombre del paciente"
+        />
+      </div>
+      <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input
+          type="number"
+          id="edad"
+          [(ngModel)]="edadModel.value"
+          min="0"
+          max="150"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" [(ngModel)]="fechaModel.value" />
+    </div>
+
+    <div class="form-group">
+      <label for="horaInicio">Hora Inicio:</label>
+      <input type="time" id="horaInicio" [(ngModel)]="horaInicioModel.value" />
+    </div>
+
+    <div class="form-group">
+      <label for="observaciones">Observaciones:</label>
+      <textarea
+        id="observaciones"
+        rows="4"
+        [(ngModel)]="observacionesModel.value"
+      ></textarea>
+    </div>
+  </section>
+
+  <section class="prescripcion-medica">
+    <div class="section-header">
+      <h3>Prescripción Médica</h3>
+      <button class="btn-agregar" (click)="agregarMedicamento()">
+        Agregar
+      </button>
+    </div>
+
+    <div
+      class="medicamento-container"
+      *ngFor="let med of medicamentos(); let i = index"
+    >
+      <div class="medicamento-inputs">
+        <select [(ngModel)]="med.nombre">
+          <option value="">Seleccione un medicamento</option>
+          <option
+            *ngFor="let option of medicamentosOptions()"
+            [value]="option.nombre"
+          >
+            {{ option.nombre }}
+          </option>
+        </select>
+        <input
+          type="text"
+          [(ngModel)]="med.dosisIndicaciones"
+          placeholder="Dosis e Indicaciones"
+        />
+      </div>
+      <button class="btn-delete" (click)="eliminarMedicamento(i)">×</button>
+    </div>
+  </section>
+
+  <section class="estudios">
+    <div class="section-header">
+      <h3>Estudios</h3>
+      <button class="btn-agregar" (click)="agregarEstudio()">Agregar</button>
+    </div>
+
+    <div
+      class="estudio-container"
+      *ngFor="let est of estudios(); let i = index"
+    >
+      <select [(ngModel)]="est.nombre">
+        <option value="">Seleccione un estudio</option>
+        <option
+          *ngFor="let option of estudiosOptions()"
+          [value]="option.nombre"
+        >
+          {{ option.nombre }}
+        </option>
+      </select>
+      <button class="btn-delete" (click)="eliminarEstudio(i)">×</button>
+    </div>
+  </section>
+
+  <section class="documentos">
+    <h3>Documentos</h3>
+    <div
+      class="drop-zone"
+      (dragover)="$event.preventDefault()"
+      (drop)="$event.preventDefault()"
+    >
+      <p>Arrastra y suelta tus archivos aquí ó</p>
+      <input
+        type="file"
+        id="fileInput"
+        multiple
+        (change)="onFileSelected($event)"
+        hidden
+      />
+      <label for="fileInput" class="btn-subir">Subir Archivos</label>
+    </div>
+    <div
+      class="archivos-seleccionados"
+      *ngIf="archivosSeleccionados().length > 0"
+    >
+      <div class="archivo-item" *ngFor="let archivo of archivosSeleccionados()">
+        <span>{{ archivo.file.name }}</span>
+        <button
+          class="btn-delete-archivo"
+          (click)="eliminarArchivo(archivo.id)"
+        >
+          ×
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="diagnostico">
+    <h3>Diagnóstico:</h3>
+    <textarea [(ngModel)]="diagnosticoModel.value" rows="4"></textarea>
+  </section>
+
+  <button class="btn-guardar" (click)="guardarSesion()">Guardar Sesión</button>
+</div>
